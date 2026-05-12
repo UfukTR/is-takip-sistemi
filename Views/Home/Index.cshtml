@@ -1,0 +1,60 @@
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">İş Takip Sistemi</h1>
+        <p class="lead">Hoş geldiniz! Bu sistem, kuruluşunuzun işlerini takip etmek ve yönetmek için tasarlanmıştır.</p>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5>📋 İşler</h5>
+            </div>
+            <div class="card-body">
+                <p>Tüm işleri görüntüleyin, yeni iş oluşturun ve durumlarını güncelleyin.</p>
+                <a href="@Url.Action("Index", "Isler")" class="btn btn-primary">İşleri Yönet</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5>👥 Personeller</h5>
+            </div>
+            <div class="card-body">
+                <p>Personel bilgilerini yönetin ve birim atamalarını yapın.</p>
+                <a href="@Url.Action("Index", "Personel")" class="btn btn-success">Personelleri Yönet</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h5>🏢 Birimler</h5>
+            </div>
+            <div class="card-body">
+                <p>Kuruluş birimlerini yönetin.</p>
+                <a href="@Url.Action("Index", "Birim")" class="btn btn-warning">Birimleri Yönet</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5>🔄 Durumlar</h5>
+            </div>
+            <div class="card-body">
+                <p>İş durumlarını yönetin.</p>
+                <a href="@Url.Action("Index", "Durum")" class="btn btn-info">Durumları Yönet</a>
+            </div>
+        </div>
+    </div>
+</div>
