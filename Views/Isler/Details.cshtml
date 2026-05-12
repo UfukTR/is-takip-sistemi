@@ -1,0 +1,50 @@
+@model IsTakipSistemi.Models.Isler
+
+@{
+    ViewBag.Title = "İş Detayları";
+}
+
+<h2>İş Detayları</h2>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5>@Model.IsBaslik</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <strong>Açıklama:</strong>
+                    <p>@Model.IsAciklama</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>Personel:</strong>
+                        <p>@(Model.Personel?.PersonelAdSoyad ?? "Atanmamış")</p>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Durum:</strong>
+                        <p><span class="badge bg-secondary">@(Model.Durum?.DurumAd ?? "Belirtilmedi")</span></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>İletilen Tarih:</strong>
+                        <p>@Model.IletilenTarih?.ToString("dd.MM.yyyy HH:mm")</p>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Yapılan Tarih:</strong>
+                        <p>@(Model.YapilanTarih?.ToString("dd.MM.yyyy HH:mm") ?? "Henüz yapılmadı")</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                @Html.ActionLink("Düzenle", "Edit", new { id = Model.IsId }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Sil", "Delete", new { id = Model.IsId }, new { @class = "btn btn-danger" })
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </div>
+    </div>
+</div>

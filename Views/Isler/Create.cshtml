@@ -1,0 +1,44 @@
+@model IsTakipSistemi.Models.Isler
+
+@{
+    ViewBag.Title = "Yeni İş Oluştur";
+}
+
+<h2>Yeni İş Oluştur</h2>
+
+@using (Html.BeginForm("Create", "Isler", FormMethod.Post, new { @class = "form-group" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-8">
+            <div class="mb-3">
+                @Html.LabelFor(model => model.IsBaslik, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.IsBaslik, new { @class = "form-control", @placeholder = "İş Başlığı" })
+                @Html.ValidationMessageFor(model => model.IsBaslik, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.IsAciklama, new { @class = "form-label" })
+                @Html.TextAreaFor(model => model.IsAciklama, new { @class = "form-control", @rows = "5", @placeholder = "İş Açıklaması" })
+                @Html.ValidationMessageFor(model => model.IsAciklama, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.IsPersonelId, "Personel", new { @class = "form-label" })
+                @Html.DropDownListFor(model => model.IsPersonelId, ViewBag.IsPersonelId as SelectList, "-- Personel Seçin --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IsPersonelId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.IsDurumId, "Durum", new { @class = "form-label" })
+                @Html.DropDownListFor(model => model.IsDurumId, ViewBag.IsDurumId as SelectList, "-- Durum Seçin --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IsDurumId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Oluştur</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">İptal</a>
+            </div>
+        </div>
+    </div>
+}
