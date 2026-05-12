@@ -1,0 +1,26 @@
+@model IsTakipSistemi.Models.Birimler
+
+@{
+    ViewBag.Title = "Yeni Birim Ekle";
+}
+
+<h2>Yeni Birim Ekle</h2>
+
+@using (Html.BeginForm("Create", "Birim", FormMethod.Post, new { @class = "form-group" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                @Html.LabelFor(model => model.BirimAd, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.BirimAd, new { @class = "form-control", @placeholder = "Birim Adı" })
+                @Html.ValidationMessageFor(model => model.BirimAd, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Ekle</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">İptal</a>
+            </div>
+        </div>
+    </div>
+}
