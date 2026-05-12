@@ -1,0 +1,50 @@
+@model IsTakipSistemi.Models.Personeller
+
+@{
+    ViewBag.Title = "Yeni Personel Ekle";
+}
+
+<h2>Yeni Personel Ekle</h2>
+
+@using (Html.BeginForm("Create", "Personel", FormMethod.Post, new { @class = "form-group" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-8">
+            <div class="mb-3">
+                @Html.LabelFor(model => model.PersonelAdSoyad, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.PersonelAdSoyad, new { @class = "form-control", @placeholder = "Ad Soyad" })
+                @Html.ValidationMessageFor(model => model.PersonelAdSoyad, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.PersonelKullaniciAd, new { @class = "form-label" })
+                @Html.TextBoxFor(model => model.PersonelKullaniciAd, new { @class = "form-control", @placeholder = "Kullanıcı Adı" })
+                @Html.ValidationMessageFor(model => model.PersonelKullaniciAd, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.PersonelParola, new { @class = "form-label" })
+                @Html.PasswordFor(model => model.PersonelParola, new { @class = "form-control", @placeholder = "Parola" })
+                @Html.ValidationMessageFor(model => model.PersonelParola, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.PersonelBirimId, "Birim", new { @class = "form-label" })
+                @Html.DropDownListFor(model => model.PersonelBirimId, ViewBag.PersonelBirimId as SelectList, "-- Birim Seçin --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PersonelBirimId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                @Html.LabelFor(model => model.PersonelYetkiTurId, "Yetki Türü", new { @class = "form-label" })
+                @Html.DropDownListFor(model => model.PersonelYetkiTurId, ViewBag.PersonelYetkiTurId as SelectList, "-- Yetki Türü Seçin --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PersonelYetkiTurId, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Ekle</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">İptal</a>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,49 @@
+@model IEnumerable<IsTakipSistemi.Models.Personeller>
+
+@{
+    ViewBag.Title = "Personeller";
+}
+
+<h2>Personeller Listesi</h2>
+<p>
+    @Html.ActionLink("Yeni Personel Ekle", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Kullanıcı Adı</th>
+                <th>Birim</th>
+                <th>Yetki Türü</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count() > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.PersonelAdSoyad)</td>
+                        <td>@Html.DisplayFor(modelItem => item.PersonelKullaniciAd)</td>
+                        <td>@item.Birim?.BirimAd</td>
+                        <td>@item.YetkiTur?.YetkiTurAd</td>
+                        <td>
+                            @Html.ActionLink("Detay", "Details", new { id = item.PersonelId }, new { @class = "btn btn-sm btn-info" })
+                            @Html.ActionLink("Düzenle", "Edit", new { id = item.PersonelId }, new { @class = "btn btn-sm btn-warning" })
+                            @Html.ActionLink("Sil", "Delete", new { id = item.PersonelId }, new { @class = "btn btn-sm btn-danger" })
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">Henüz hiç personel eklenmemiştir.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
